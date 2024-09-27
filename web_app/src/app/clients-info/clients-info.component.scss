@@ -1,0 +1,23 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.users {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    .user {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        
+        tui-input {
+            box-shadow: 0px 0px 55px -10px rgba(34, 60, 80, 0.2);
+        }
+    }
+}

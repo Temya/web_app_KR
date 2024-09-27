@@ -1,0 +1,50 @@
+<h1>Форма бронирования мест в отеле</h1>
+
+<form *ngIf="type !== null" [formGroup]="form">
+    <div class="inputs-wrapper">
+        <tui-input formControlName="arrivalDate">
+            Дата прибытия
+            <input
+                tuiTextfieldLegacy
+                type="text"
+            />
+        </tui-input>
+        <tui-input formControlName="departureDate">
+            Дата отбытия
+            <input
+                tuiTextfieldLegacy
+                type="text"
+            />
+        </tui-input>
+        <tui-input formControlName="countOfGuests">
+            Кол-во гостей
+            <input
+                tuiTextfieldLegacy
+                type="text"
+            />
+        </tui-input>
+    </div>
+    <tui-select
+    [tuiTextfieldLabelOutside]="true"
+    formControlName="typeRoom"
+    
+>
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="types"
+    />
+</tui-select>
+</form>
+
+<app-clients-info></app-clients-info>
+
+<footer>
+    <button
+    appearance="floating"
+    tuiButton
+    type="button"
+    (click)="test()"
+    >
+        Далее
+    </button>
+</footer>

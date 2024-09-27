@@ -1,0 +1,38 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+form {
+    width: 450px;
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    tui-input {
+        width: 150px;
+    }
+
+    tui-select, tui-input {
+        box-shadow: 0px 0px 55px -10px rgba(34, 60, 80, 0.2);
+    }
+}
+
+.inputs-wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+        margin: 0px 20px 20px 0px;
+    }
+}

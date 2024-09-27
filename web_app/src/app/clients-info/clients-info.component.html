@@ -1,0 +1,37 @@
+<h2>Информация о клиентах</h2>
+
+<form *ngIf="form" [formGroup]="form">
+    <div formArrayName="users" class="users">
+        <div class="user" *ngFor="let user of users.controls; let i = index" [formGroupName]="i">
+            <h3>Клиент {{i + 1}}</h3>
+            <tui-input formControlName="clientName">
+                Имя
+                <input
+                    tuiTextfieldLegacy
+                    type="text"
+                />
+            </tui-input>
+            <tui-input formControlName="clientLastName">
+                Фамилия
+                <input
+                    tuiTextfieldLegacy
+                    type="text"
+                />
+            </tui-input>
+            <tui-input formControlName="clientEmail">
+                Электронная почта
+                <input
+                    tuiTextfieldLegacy
+                    type="text"
+                />
+            </tui-input>
+            <tui-input formControlName="clientPhoneNumber">
+                Мобильный Номер
+                <input
+                    tuiTextfieldLegacy
+                    type="text"
+                />
+            </tui-input>
+        </div>
+    </div>
+</form>

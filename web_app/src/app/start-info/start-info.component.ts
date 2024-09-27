@@ -40,7 +40,7 @@ export class StartInfoComponent {
 			arrivalDate: this.fb.control(null, Validators.required),
       departureDate: this.fb.control(null, Validators.required),
       countOfGuests: this.fb.control(null, [Validators.required, Validators.max(6), Validators.min(1)]),
-      typeRoom: this.fb.control("Выберите тип номера", Validators.required),
+      typeRoom: this.fb.control(null, Validators.required),
 		});
 
     this.form.valueChanges

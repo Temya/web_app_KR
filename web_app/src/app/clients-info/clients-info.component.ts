@@ -37,8 +37,8 @@ export class ClientsInfoComponent {
     this.form.valueChanges
       .pipe(takeUntilDestroyed(this.destroy))
       .subscribe(data => {
-        this.service.usersInfo = {...this.service.usersInfo, ...data};
-        this.formValidityTwo.emit(this.form.valid); 
+        this.service.usersInfo = {...this.service.usersInfo, ...data};        
+        this.formValidityTwo.emit(this.form.valid);
       });
   }
 

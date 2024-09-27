@@ -4,7 +4,7 @@
     #carousel
 >
     <div *tuiItem><app-start-info (formValidityOne)="handleFormValidityOne($event)"></app-start-info></div>
-    <div *tuiItem><app-clients-info (formValidityTwo)="handleFormValidityTwo($event)" *ngIf="page === 1"></app-clients-info></div>
+    <div *tuiItem><app-clients-info (formValidityTwo)="handleFormValidityTwo($event)" *ngIf="service.usersInfo?.countOfGuests"></app-clients-info></div>
     <div *tuiItem><app-payment (formValidityThree)="handleFormValidityThree($event)"></app-payment></div>
 </tui-carousel>
 
@@ -31,8 +31,7 @@
         Таблица брони
     </button>
     <button
-    *ngIf="page !== 2"
-    [ngClass]="{disabled: Validity}"
+    *ngIf="page !== 2 && !Validity"
     appearance="floating"
     tuiButton
     type="button"
@@ -42,12 +41,10 @@
         Далее
     </button>
     <button
-    *ngIf="page === 2"
-    [ngClass]="{disabled: Validity}"
+    *ngIf="page === 2 && !Validity"
     appearance="floating"
     tuiButton
     type="button"
-    (click)="carousel.next()"
     (click)="finish()"
     >
         Завершить

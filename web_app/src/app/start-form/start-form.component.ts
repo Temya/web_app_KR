@@ -33,7 +33,7 @@ export class StartFormComponent {
   public isFormValidThree?: boolean;
   public page = 0;
 
-  constructor(private readonly service: BackendService, private readonly cdr: ChangeDetectorRef) {}
+  constructor(public readonly service: BackendService, private readonly cdr: ChangeDetectorRef) {}
 
   public handleFormValidityOne(validity: boolean) {
     this.isFormValidOne = validity;
@@ -48,9 +48,9 @@ export class StartFormComponent {
   }
 
   public nextPage(): void {
-    // if(this.isFormValid) {
+    if(this.Validity) {
       if(this.page < 2) this.page++;
-    // }    
+    }    
   }
 
   public pastPage(): void {
@@ -62,6 +62,10 @@ export class StartFormComponent {
   }
 
   public get Validity(): boolean {
-    return this.page === 0 && this.isFormValidOne || this.page === 1 && this.isFormValidTwo || this.page === 2 && this.isFormValidThree ? false: true;
+    if(this.page === 0 && this.isFormValidOne) return false;
+    if(this.page === 1 && this.isFormValidTwo) return false;
+    if(this.page === 2 && this.isFormValidThree) return false;
+
+    return true;
   }
 }

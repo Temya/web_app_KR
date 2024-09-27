@@ -28,19 +28,29 @@ import { BackendService } from '../backend.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StartFormComponent {
-  public isFormValid?: boolean;
+  public isFormValidOne?: boolean;
+  public isFormValidTwo?: boolean;
+  public isFormValidThree?: boolean;
   public page = 0;
 
   constructor(private readonly service: BackendService, private readonly cdr: ChangeDetectorRef) {}
 
-  public handleFormValidity(validity: boolean) {
-    this.isFormValid = validity;
+  public handleFormValidityOne(validity: boolean) {
+    this.isFormValidOne = validity;
+  }
+
+  public handleFormValidityTwo(validity: boolean) {
+    this.isFormValidTwo = validity;
+  }
+
+  public handleFormValidityThree(validity: boolean) {
+    this.isFormValidThree = validity;
   }
 
   public nextPage(): void {
-    if(this.isFormValid) {
+    // if(this.isFormValid) {
       if(this.page < 2) this.page++;
-    }    
+    // }    
   }
 
   public pastPage(): void {
@@ -49,5 +59,9 @@ export class StartFormComponent {
 
   public finish(): void {
 
+  }
+
+  public get Validity(): boolean {
+    return this.page === 0 && this.isFormValidOne || this.page === 1 && this.isFormValidTwo || this.page === 2 && this.isFormValidThree ? false: true;
   }
 }

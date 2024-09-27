@@ -3,9 +3,9 @@
 <tui-carousel
     #carousel
 >
-    <div *tuiItem><app-start-info (formValidity)="handleFormValidity($event)"></app-start-info></div>
-    <div *tuiItem><app-clients-info *ngIf="page === 1"></app-clients-info></div>
-    <div *tuiItem><app-payment></app-payment></div>
+    <div *tuiItem><app-start-info (formValidityOne)="handleFormValidityOne($event)"></app-start-info></div>
+    <div *tuiItem><app-clients-info (formValidityTwo)="handleFormValidityTwo($event)" *ngIf="page === 1"></app-clients-info></div>
+    <div *tuiItem><app-payment (formValidityThree)="handleFormValidityThree($event)"></app-payment></div>
 </tui-carousel>
 
 
@@ -32,7 +32,7 @@
     </button>
     <button
     *ngIf="page !== 2"
-    [ngClass]="{disabled: !isFormValid}"
+    [ngClass]="{disabled: Validity}"
     appearance="floating"
     tuiButton
     type="button"
@@ -43,6 +43,7 @@
     </button>
     <button
     *ngIf="page === 2"
+    [ngClass]="{disabled: Validity}"
     appearance="floating"
     tuiButton
     type="button"

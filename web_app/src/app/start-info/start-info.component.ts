@@ -21,7 +21,7 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StartInfoComponent {
-  @Output() formValidity = new EventEmitter<boolean>();
+  @Output() formValidityOne = new EventEmitter<boolean>();
   
   public form: FormGroup;
   
@@ -47,7 +47,7 @@ export class StartInfoComponent {
       .pipe(takeUntilDestroyed(this.destroy))
       .subscribe(data => {
         this.service.usersInfo = {...this.service.usersInfo, ...data};
-        this.formValidity.emit(this.form.valid);       
+        this.formValidityOne.emit(this.form.valid);       
       });
   }
 }

@@ -1,1 +1,37 @@
-<p>payment works!</p>
+<h2>Оплата</h2>
+
+<form [formGroup]="form">
+    <tui-select
+    [tuiTextfieldLabelOutside]="true"
+    formControlName="paymentMethod"
+    
+>
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="types"
+    />
+</tui-select>
+    <div *ngIf="form.controls['paymentMethod'].value !== 'Наличные' && form.controls['paymentMethod'].value !== 'Способ оплаты'" class="inputs-wrapper">
+        <tui-input formControlName="numberCard">
+            Номер карты
+            <input
+                tuiTextfieldLegacy
+                type="text"
+            />
+        </tui-input>
+        <tui-input formControlName="dateEnd">
+            Дата истечения
+            <input
+                tuiTextfieldLegacy
+                type="text"
+            />
+        </tui-input>
+        <tui-input formControlName="cvv">
+            CVV
+            <input
+                tuiTextfieldLegacy
+                type="text"
+            />
+        </tui-input>
+    </div>
+</form>

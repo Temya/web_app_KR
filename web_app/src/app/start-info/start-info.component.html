@@ -1,0 +1,35 @@
+<h2>Информаци о брони</h2>
+
+<form [formGroup]="form">
+    <div class="inputs-wrapper">
+        <tui-input-date
+        formControlName="arrivalDate"
+        tuiUnfinishedValidator="Finish filling the field"
+        >
+            Дата прибытия
+        </tui-input-date>
+        <tui-input-date
+        formControlName="departureDate"
+        tuiUnfinishedValidator="Finish filling the field"
+        >
+            Дата отбытия
+        </tui-input-date>
+        <tui-input formControlName="countOfGuests">
+            Кол-во гостей
+            <input
+                tuiTextfieldLegacy
+                type="number"
+            />
+        </tui-input>
+    </div>
+    <tui-select
+    [tuiTextfieldLabelOutside]="true"
+    formControlName="typeRoom"
+    
+>
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="types"
+    />
+</tui-select>
+</form>

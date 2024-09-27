@@ -1,22 +1,27 @@
 :host {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
 }
 
-.inputs-wrapper {
+form {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
-    gap: 10px;
-}
+    gap: 15px;
 
-form {
+    tui-input {
+        width: 150px;
+    }
 
     tui-select, tui-input {
         box-shadow: 0px 0px 55px -10px rgba(34, 60, 80, 0.2);
-        width: 300px;
     }
+}
+
+.inputs-wrapper {
+    display: flex;
+    gap: 8px;
 }

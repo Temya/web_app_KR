@@ -1,9 +1,13 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import {TuiInputModule, TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {TuiInputModule} from '@taiga-ui/legacy';
 import {TuiButton} from '@taiga-ui/core';
 import { CommonModule } from '@angular/common';
 import { ClientsInfoComponent } from '../clients-info/clients-info.component';
+import { PaymentComponent } from '../payment/payment.component';
+import {TuiCarousel} from '@taiga-ui/kit';
+import { StartInfoComponent } from '../start-info/start-info.component';
+import { BackendService } from '../backend.service';
 
 @Component({
   selector: 'app-start-form',
@@ -13,37 +17,37 @@ import { ClientsInfoComponent } from '../clients-info/clients-info.component';
     ReactiveFormsModule,
     TuiInputModule,
     TuiButton,
-    TuiSelectModule,
-    TuiTextfieldControllerModule,
     FormsModule,
-    ClientsInfoComponent
+    ClientsInfoComponent,
+    PaymentComponent,
+    StartInfoComponent,
+    TuiCarousel
   ],
   templateUrl: './start-form.component.html',
-  styleUrl: './start-form.component.scss'
+  styleUrl: './start-form.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StartFormComponent {
+  public isFormValid?: boolean;
+  public page = 0;
 
-  public type: String | null = null;
-  public form: FormGroup;
-  
-  public readonly types: readonly String[] = [
-     'Эконом',
-     'Комфорт',
-     'Комфорт +',
-     'Премиум',
-     'Прездидентский Люкс',
-  ];
+  constructor(private readonly service: BackendService, private readonly cdr: ChangeDetectorRef) {}
 
-  constructor(private readonly fb: FormBuilder){
-    this.form = this.fb.group({
-			arrivalDate: this.fb.control("", Validators.required),
-      departureDate: this.fb.control("", Validators.required),
-      countOfGuests: this.fb.control("", Validators.required),
-      typeRoom: this.fb.control("Выберите тип номера", Validators.required),
-		});
+  public handleFormValidity(validity: boolean) {
+    this.isFormValid = validity;
   }
 
-  public test(): void {
-    console.log(this.form.get("typeRoom")?.value);
+  public nextPage(): void {
+    if(this.isFormValid) {
+      if(this.page < 2) this.page++;
+    }    
+  }
+
+  public pastPage(): void {
+    if(this.page > 0) this.page--;
+  }
+
+  public finish(): void {
+
   }
 }

@@ -48,7 +48,9 @@ export class StartFormComponent {
   }
 
   public nextPage(): void {
-    if(this.Validity) {
+    console.log(this.page);
+    
+    if(!this.getValidity()) {
       if(this.page < 2) this.page++;
     }    
   }
@@ -61,11 +63,16 @@ export class StartFormComponent {
 
   }
 
-  public get Validity(): boolean {
+  public getValidity(): boolean {
     if(this.page === 0 && this.isFormValidOne) return false;
     if(this.page === 1 && this.isFormValidTwo) return false;
     if(this.page === 2 && this.isFormValidThree) return false;
 
     return true;
+  }
+
+  public test(): void {
+    console.log(this.service.usersInfo);
+    
   }
 }

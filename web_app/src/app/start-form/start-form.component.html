@@ -27,11 +27,12 @@
     appearance="floating"
     tuiButton
     type="button"
+    (click)="test()"
     >
         Таблица брони
     </button>
     <button
-    *ngIf="page !== 2 && !Validity"
+    *ngIf="page !== 2 && !getValidity()"
     appearance="floating"
     tuiButton
     type="button"
@@ -41,7 +42,7 @@
         Далее
     </button>
     <button
-    *ngIf="page === 2 && !Validity"
+    *ngIf="page === 2"
     appearance="floating"
     tuiButton
     type="button"

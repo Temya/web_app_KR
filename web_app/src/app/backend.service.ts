@@ -14,10 +14,10 @@ export class BackendService {
   constructor(private readonly http: HttpClient) {}
 
   public addReservation(reservationData: UserInfo): Observable<any> {
-    return this.http.post<any>(this.apiUrl, reservationData);
+    return this.http.post<UserInfo>(this.apiUrl, reservationData);
   }
 
   public getAllReservations(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<UserInfo[]>(this.apiUrl);
   }
 }

@@ -72,7 +72,9 @@ export class StartFormComponent {
   }
 
   public test(): void {
-    console.log(this.service.usersInfo);
+    this.service.getAllReservations()
+    .subscribe((res) => console.log(res)
+    )
     
   }
 }

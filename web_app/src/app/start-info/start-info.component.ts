@@ -47,7 +47,7 @@ export class StartInfoComponent {
       .pipe(takeUntilDestroyed(this.destroy))
       .subscribe(data => {
         this.service.usersInfo = {...this.service.usersInfo, ...data};
-        this.formValidityOne.emit(this.form.valid);       
+        this.formValidityOne.emit(this.form.valid);               
       });
   }
 }

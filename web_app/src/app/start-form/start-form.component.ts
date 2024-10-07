@@ -8,6 +8,7 @@ import { PaymentComponent } from '../payment/payment.component';
 import {TuiCarousel} from '@taiga-ui/kit';
 import { StartInfoComponent } from '../start-info/start-info.component';
 import { BackendService } from '../backend.service';
+import { Reservation, UserInfo } from '../user-info';
 
 @Component({
   selector: 'app-start-form',
@@ -60,7 +61,24 @@ export class StartFormComponent {
   }
 
   public finish(): void {
+    this.service.addReservation(this.transformationDateToString(this.service.usersInfo as UserInfo)).subscribe((res) => console.log(res)
+    )
+  }
 
+  public transformationDateToString(User: UserInfo): Reservation {
+    const reserv = {
+      arrivalDate: this.convertDateFormat(String(User.arrivalDate)),
+      departureDate: this.convertDateFormat(String(User.departureDate)),
+      guestCount: User.countOfGuests,
+      guests: User.users,
+      roomType: User.typeRoom
+    }
+    return reserv
+  }
+
+  public convertDateFormat(dateString: string): string {
+    const parts = dateString.split('.');
+    return `${parts[2]}-${parts[1]}-${parts[0]}`;
   }
 
   public getValidity(): boolean {
@@ -76,5 +94,12 @@ export class StartFormComponent {
     .subscribe((res) => console.log(res)
     )
     
+  }
+
+  public test1(): void {
+    console.log(this.service.usersInfo);
+    
+    console.log(this.transformationDateToString(this.service.usersInfo as UserInfo));
+    ;
   }
 }

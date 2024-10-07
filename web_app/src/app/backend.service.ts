@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserInfo } from './user-info';
+import { Reservation, UserInfo } from './user-info';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -13,11 +13,11 @@ export class BackendService {
 
   constructor(private readonly http: HttpClient) {}
 
-  public addReservation(reservationData: UserInfo): Observable<any> {
-    return this.http.post<UserInfo>(this.apiUrl, reservationData);
+  public addReservation(reservationData: Reservation): Observable<any> {
+    return this.http.post<Reservation>(this.apiUrl, reservationData);
   }
 
   public getAllReservations(): Observable<any[]> {
-    return this.http.get<UserInfo[]>(this.apiUrl);
+    return this.http.get<any[]>(this.apiUrl);
   }
 }

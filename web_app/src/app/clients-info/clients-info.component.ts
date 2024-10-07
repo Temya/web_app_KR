@@ -44,10 +44,10 @@ export class ClientsInfoComponent {
 
   addClient(): void {
     const clientGroup = this.fb.group({
-      clientName: ['', Validators.required],
-      clientLastName: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       clientEmail: ['', [Validators.required, Validators.email]],
-      clientPhoneNumber: ['', Validators.required]
+      phoneNumber: ['', Validators.required]
     });
     this.users.push(clientGroup);
   }

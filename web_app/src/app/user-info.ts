@@ -3,12 +3,25 @@ export interface UserInfo {
     departureDate: Date,
     countOfGuests: number,
     typeRoom: string,
-    clients: ClientsInfo[]
+    users: ClientsInfo[]
 }
 
 export interface ClientsInfo {
-    clientName: string,
-    clientLastName: string,
-    clientEmail: string,
-    clientPhoneNumber: string
+    firstName: string,
+    lastName: string,
+    phoneNumber: string
+}
+
+export interface Reservation { 
+arrivalDate: string,
+departureDate: string,
+guestCount: number,
+roomType: string,
+guests: Guests[]
+}
+
+export interface Guests {
+firstName: string,
+lastName: string,
+phoneNumber: string
 }

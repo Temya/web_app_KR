@@ -9,6 +9,7 @@ import {TuiCarousel} from '@taiga-ui/kit';
 import { StartInfoComponent } from '../start-info/start-info.component';
 import { BackendService } from '../backend.service';
 import { Reservation, UserInfo } from '../user-info';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-start-form',
@@ -34,7 +35,7 @@ export class StartFormComponent {
   public isFormValidThree?: boolean;
   public page = 0;
 
-  constructor(public readonly service: BackendService, private readonly cdr: ChangeDetectorRef) {}
+  constructor(public readonly service: BackendService, private readonly cdr: ChangeDetectorRef, private readonly route: Router) {}
 
   public handleFormValidityOne(validity: boolean) {
     this.isFormValidOne = validity;
@@ -89,17 +90,7 @@ export class StartFormComponent {
     return true;
   }
 
-  public test(): void {
-    this.service.getAllReservations()
-    .subscribe((res) => console.log(res)
-    )
-    
-  }
-
-  public test1(): void {
-    console.log(this.service.usersInfo);
-    
-    console.log(this.transformationDateToString(this.service.usersInfo as UserInfo));
-    ;
+  public getToTable(): void {
+    this.route.navigateByUrl("/table")
   }
 }

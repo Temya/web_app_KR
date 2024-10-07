@@ -17,7 +17,7 @@ export class BackendService {
     return this.http.post<Reservation>(this.apiUrl, reservationData);
   }
 
-  public getAllReservations(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  public getAllReservations(): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(this.apiUrl);
   }
 }

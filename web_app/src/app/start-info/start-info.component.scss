@@ -4,6 +4,7 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    padding: 10px;
 }
 
 form {
@@ -24,4 +25,8 @@ form {
 .inputs-wrapper {
     display: flex;
     gap: 8px;
+}
+
+.error {
+    color: red;
 }

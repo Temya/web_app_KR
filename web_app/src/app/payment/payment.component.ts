@@ -35,17 +35,17 @@ export class PaymentComponent {
 
   constructor(private readonly fb: FormBuilder, private readonly service: BackendService){
     this.form = this.fb.group({
-			numberCard: this.fb.control("", Validators.required),
-      cvv: this.fb.control("", Validators.required),
-      dateEnd: this.fb.control("", Validators.required),
+			numberCard: this.fb.control("", [Validators.required, Validators.pattern(/^\d{16}$/)]),
+      cvv: this.fb.control("", [Validators.required, Validators.pattern(/^\d{3}$/)]),
+      dateEnd: this.fb.control("", [Validators.required, Validators.pattern(/^(0[1-9]|1[0-2])\/?(\d{2}|\d{4})$/)]),
       paymentMethod: this.fb.control("Способ оплаты", Validators.required),
 		});
 
     this.form.valueChanges
       .pipe(takeUntilDestroyed(this.destroy))
       .subscribe(data => {
-        this.service.usersInfo = {...this.service.usersInfo, ...data};
-        this.formValidityThree.emit(this.form.valid);      
+        this.service.paymentMethod = data;
+        this.formValidityThree.emit(this.form.valid);   
       });
   }
 }

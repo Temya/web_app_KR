@@ -62,8 +62,8 @@ export class StartFormComponent {
   }
 
   public finish(): void {
-    this.service.addReservation(this.transformationDateToString(this.service.usersInfo as UserInfo)).subscribe((res) => console.log(res)
-    )
+    this.service.addReservation(this.transformationDateToString(this.service.usersInfo as UserInfo)).subscribe((res) => console.log(res));
+    this.route.navigateByUrl("");
   }
 
   public transformationDateToString(User: UserInfo): Reservation {
@@ -88,6 +88,10 @@ export class StartFormComponent {
     if(this.page === 2 && this.isFormValidThree) return false;
 
     return true;
+  }
+
+  public getPaymentValidity(): boolean {
+    return this.service.paymentMethod;
   }
 
   public getToTable(): void {

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { TuiInputDateModule, TuiInputModule, TuiSelectModule, TuiTextfieldControllerModule } from '@taiga-ui/legacy';
 import { BackendService } from '../backend.service';
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { dateRangeValidator } from '../dateRangeValidator';
 
 @Component({
   selector: 'app-start-info',
@@ -41,7 +42,10 @@ export class StartInfoComponent {
       departureDate: this.fb.control(null, Validators.required),
       countOfGuests: this.fb.control(null, [Validators.required, Validators.max(6), Validators.min(1)]),
       typeRoom: this.fb.control(null, Validators.required),
-		});
+		},
+    {
+      validators: dateRangeValidator("arrivalDate", "departureDate")
+    });
 
     this.form.valueChanges
       .pipe(takeUntilDestroyed(this.destroy))

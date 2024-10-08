@@ -17,19 +17,22 @@
         <tui-input formControlName="countOfGuests">
             Кол-во гостей
             <input
-                tuiTextfieldLegacy
-                type="number"
+            tuiTextfieldLegacy
+            type="number"
             />
         </tui-input>
     </div>
-    <tui-select
-    [tuiTextfieldLabelOutside]="true"
-    formControlName="typeRoom"
->
-    Выберите тип номера
-    <tui-data-list-wrapper
+        <tui-select
+        [tuiTextfieldLabelOutside]="true"
+        formControlName="typeRoom"
+        >
+            Выберите тип номера
+        <tui-data-list-wrapper
         *tuiDataList
         [items]="types"
-    />
-</tui-select>
+        />
+        </tui-select>
+        <div class="error" *ngIf="form && form.hasError('dateRangeInvalid') && form.touched">
+            Дата отбытия должна быть после даты прибытия.
+        </div>
 </form>

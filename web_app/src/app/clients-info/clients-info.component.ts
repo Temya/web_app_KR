@@ -44,10 +44,9 @@ export class ClientsInfoComponent {
 
   addClient(): void {
     const clientGroup = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      clientEmail: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', Validators.required]
+      firstName: ['', [Validators.required, Validators.pattern(/^[^\d]*$/)]],
+      lastName: ['', [Validators.required, Validators.pattern(/^[^\d]*$/)]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^\d+$/)]]
     });
     this.users.push(clientGroup);
   }

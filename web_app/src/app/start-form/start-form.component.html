@@ -42,7 +42,7 @@
         Далее
     </button>
     <button
-    *ngIf="page === 2"
+    *ngIf="page === 2 && getPaymentValidity() && !getValidity()"
     appearance="floating"
     tuiButton
     type="button"

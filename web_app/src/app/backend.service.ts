@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class BackendService {
 
   public usersInfo?: UserInfo;
+  public paymentMethod?: any;
   private apiUrl = 'http://localhost:3000/api/reservations';
 
   constructor(private readonly http: HttpClient) {}

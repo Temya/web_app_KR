@@ -31,9 +31,4 @@ export class TableOfInformationComponent {
   public selectParam(selected: number): void {
     if(this.allInfo) this.selectedReserv = this.allInfo[selected].guests;
   }
-
-
-  public getToStart(): void {
-    this.route.navigateByUrl("/");
-  }
 }

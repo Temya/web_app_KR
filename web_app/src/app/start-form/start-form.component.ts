@@ -63,7 +63,7 @@ export class StartFormComponent {
 
   public finish(): void {
     this.service.addReservation(this.transformationDateToString(this.service.usersInfo as UserInfo)).subscribe((res) => console.log(res));
-    this.route.navigateByUrl("");
+    this.route.navigateByUrl("/");
   }
 
   public transformationDateToString(User: UserInfo): Reservation {
@@ -94,7 +94,4 @@ export class StartFormComponent {
     return this.service.paymentMethod;
   }
 
-  public getToTable(): void {
-    this.route.navigateByUrl("/table")
-  }
 }
